@@ -28,7 +28,15 @@ class TesouroDiretoDatasets:
         Returns:
             DataFrame: A Pandas DataFrame containing the stock data of Tesouro Direto.
         """
-        return pd.read_csv(self.url_estoque)
+        # Reading the CSV file with specific delimiter and decimal separator
+        df = pd.read_csv(self.url_vendas, delimiter=';', decimal=',')
+
+        # Converting date columns to the correct date format
+        df['Vencimento do Titulo'] = pd.to_datetime(df['Vencimento do Titulo'], format='%d/%m/%Y')
+        df['Mes Estoque'] = pd.to_datetime(df['Mes Estoque'], format='%d/%m/%Y')
+
+        # Returning the DataFrame
+        return df
 
     def read_vendas(self):
         """
