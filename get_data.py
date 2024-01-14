@@ -59,8 +59,6 @@ class TesouroDiretoDatasets:
 
         return df
 
-
-
     def read_operacoes(self):
         """
         Reads and returns data about the operations (operacoes) of Tesouro Direto.
