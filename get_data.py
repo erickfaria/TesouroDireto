@@ -32,12 +32,25 @@ class TesouroDiretoDatasets:
 
     def read_vendas(self):
         """
-        Reads and returns data about the sales of Tesouro Direto.
+        This method reads and returns the sales data of Tesouro Direto from a CSV file.
+
+        The CSV file is read using a specific delimiter and decimal separator. 
+        The date columns are converted to the correct date format.
 
         Returns:
-            DataFrame: A Pandas DataFrame containing the sales data of Tesouro Direto.
+            DataFrame: A Pandas DataFrame containing the sales data of Tesouro Direto. 
+            The DataFrame includes columns for the type of title, title maturity date, 
+            sale date, unit price, quantity, and value.
         """
-        return pd.read_csv(self.url_vendas)
+        # Reading the CSV file with specific delimiter and decimal separator
+        df = pd.read_csv(self.url_vendas, delimiter=';', decimal=',')
+
+        # Converting date columns to the correct date format
+        df['Vencimento do Titulo'] = pd.to_datetime(df['Vencimento do Titulo'], format='%d/%m/%Y')
+        df['Data Venda'] = pd.to_datetime(df['Data Venda'], format='%d/%m/%Y')
+
+        # Returning the DataFrame
+        return df
 
     def read_taxas(self):
         """
