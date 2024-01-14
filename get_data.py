@@ -23,10 +23,15 @@ class TesouroDiretoDatasets:
 
     def read_estoque(self):
         """
-        Reads and returns data about the stock of Tesouro Direto.
+        This method reads and returns the stock data of Tesouro Direto from a CSV file.
+
+        The CSV file is read using a specific delimiter and decimal separator. 
+        The date columns are converted to the correct date format.
 
         Returns:
-            DataFrame: A Pandas DataFrame containing the stock data of Tesouro Direto.
+            DataFrame: A Pandas DataFrame containing the stock data of Tesouro Direto. 
+            The DataFrame includes columns for the type of title, title maturity date, 
+            stock month, unit price, quantity, and value.
         """
         # Reading the CSV file with specific delimiter and decimal separator
         df = pd.read_csv(self.url_vendas, delimiter=';', decimal=',')
