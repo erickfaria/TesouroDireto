@@ -40,10 +40,40 @@ class TesouroDiretoDatasets:
         return pd.read_csv(self.url_vendas)
 
     def read_taxas(self):
+        """
+        Reads and returns data about the rates (taxas) of Tesouro Direto.
+
+        This method fetches the dataset from the specified URL and loads it into a Pandas DataFrame.
+        The dataset contains information about the rates associated with different securities
+        in the Tesouro Direto program.
+
+        Returns:
+            DataFrame: A Pandas DataFrame containing the rates data of Tesouro Direto.
+        """
         return pd.read_csv(self.url_td_tax)
 
     def read_operacoes(self):
+        """
+        Reads and returns data about the operations (operacoes) of Tesouro Direto.
+
+        This method accesses the operations dataset, detailing the various transactions
+        and operations carried out in the Tesouro Direto program. The data is loaded
+        into a Pandas DataFrame directly from the provided URL.
+
+        Returns:
+            DataFrame: A Pandas DataFrame containing the operations data of Tesouro Direto.
+        """
         return pd.read_csv(self.url_td_op)
 
     def read_investidores(self):
+        """
+        Reads and returns data about the investors (investidores) of Tesouro Direto.
+
+        This method retrieves data regarding the investors in the Tesouro Direto program.
+        The dataset includes demographic and other relevant information about the investors,
+        and is loaded into a Pandas DataFrame from the specified URL.
+
+        Returns:
+            DataFrame: A Pandas DataFrame containing the investors data of Tesouro Direto.
+        """
         return pd.read_csv(self.url_inves_td)
