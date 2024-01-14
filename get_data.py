@@ -44,14 +44,21 @@ class TesouroDiretoDatasets:
         Reads and returns data about the rates (taxas) of Tesouro Direto.
 
         This method fetches the dataset from the specified URL and loads it into a Pandas DataFrame.
-        The dataset contains information about the rates associated with different securities
-        in the Tesouro Direto program. It handles the custom delimiter and decimal format.
+        The dataset contains information about the rates associated with different securities in the Tesouro Direto program.
+        It handles custom delimiters, decimal formats, and date formats.
 
         Returns:
             DataFrame: A Pandas DataFrame containing the rates data of Tesouro Direto.
         """
-        # Ajuste no separador de campos e no separador decimal
-        return pd.read_csv(self.url_td_tax, delimiter=';', decimal=',')
+        # Reading the CSV file with specific delimiter and decimal separator
+        df = pd.read_csv(self.url_td_tax, delimiter=';', decimal=',')
+
+        # Converting date columns to the correct date format
+        df['Data Vencimento'] = pd.to_datetime(df['Data Vencimento'], format='%d/%m/%Y')
+        df['Data Base'] = pd.to_datetime(df['Data Base'], format='%d/%m/%Y')
+
+        return df
+
 
 
     def read_operacoes(self):
