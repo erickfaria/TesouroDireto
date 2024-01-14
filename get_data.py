@@ -45,12 +45,14 @@ class TesouroDiretoDatasets:
 
         This method fetches the dataset from the specified URL and loads it into a Pandas DataFrame.
         The dataset contains information about the rates associated with different securities
-        in the Tesouro Direto program.
+        in the Tesouro Direto program. It handles the custom delimiter and decimal format.
 
         Returns:
             DataFrame: A Pandas DataFrame containing the rates data of Tesouro Direto.
         """
-        return pd.read_csv(self.url_td_tax)
+        # Ajuste no separador de campos e no separador decimal
+        return pd.read_csv(self.url_td_tax, delimiter=';', decimal=',')
+
 
     def read_operacoes(self):
         """
