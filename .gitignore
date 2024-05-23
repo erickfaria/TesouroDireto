@@ -1,0 +1,4 @@
+*.parquet
+*.zip
+*.gz
+*.csv
